@@ -4,31 +4,30 @@ from django.db import models
 # ------------------------------- Index Page Start-----------------------------
     
 # Models representation for content section
-class Content(models.Model):
+class Slider(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False )
     sub_title = models.TextField(null=True, blank=True)
     img1 = models.FileField(upload_to='gallery', blank=True, null=True)
     img2 = models.FileField(upload_to='gallery', blank=True, null=True)
      
     def __str__(self):
-        return f"Content {self.title}"
-    
-    class Meta:
-        verbose_name = "Content"
-        verbose_name_plural = "Contents"
-        ordering = ['title']
-    
-# Models representation for slider section
-class Slider(models.Model):
-    logo = models.FileField(upload_to='gallery', blank=True, null=True)
-    logo_hover = models.FileField(upload_to='gallery', blank=True, null=True)
-    
-    def __str__(self):
-        return f"Slider {self.id}"
+        return f"Slider {self.title}"
     
     class Meta:
         verbose_name = "Slider"
         verbose_name_plural = "Sliders"
+    
+# Models representation for brand section
+class Brands(models.Model):
+    logo = models.FileField(upload_to='gallery', blank=True, null=True)
+    logo_hover = models.FileField(upload_to='gallery', blank=True, null=True)
+    
+    def __str__(self):
+        return f"Brands {self.id}"
+    
+    class Meta:
+        verbose_name = "Brand"
+        verbose_name_plural = "Brands"
     
 # Models representation for our service section    
 class BoxIcon(models.Model):
@@ -203,7 +202,7 @@ class Security(models.Model):
         verbose_name = 'Security'
         verbose_name_plural = 'Securities'
     
-#Models representation for pricing table section
+#Models representation for monthly pricing table section
 class Monthly_Price(models.Model):
     plan_name = models.CharField(max_length=100, null=False, blank=False)
     plan_img = models.FileField(upload_to='gallery', blank=True, null=True)
@@ -220,7 +219,8 @@ class Monthly_Price(models.Model):
     class Meta:
         verbose_name = 'Monthly_Price'
         verbose_name_plural = 'Monthly_Prices'
-    
+
+#Models representation for yearly pricing table section    
 class Yearly_Price(models.Model):
     plan_name = models.CharField(max_length=100, null=False, blank=False)
     plan_img = models.FileField(upload_to='gallery', blank=True, null=True)
@@ -237,3 +237,76 @@ class Yearly_Price(models.Model):
     class Meta:
         verbose_name = 'Yearly_Price'
         verbose_name_plural = 'Yearly_Prices'
+
+#------------------------------------Careers Page Start-------------------------------
+
+#Models representation for jobs section
+class Jobs(models.Model):
+    job_name = models.CharField(max_length=100, null=False, blank=False)
+    job_time = models.CharField(max_length=100, null=False, blank=False)
+    job_desc = models.CharField(max_length=500, null=False, blank=False)
+    
+    def __str__(self):
+        return f"Jobs {self.job_name}"
+    
+    class Meta:
+        verbose_name = 'Job'
+        verbose_name_plural = 'Jobs'
+        
+#Models representation for gallery section
+class Gallery(models.Model):
+    img = models.FileField(upload_to='gallery', null=True, blank=True)
+    
+    def __str__(self):
+        return f"Gallery {self.id}"
+    
+    class Meta:
+        verbose_name = 'Gallery'
+        verbose_name_plural = 'Galleries'
+        
+#-------------------------------- Careers Page End ---------------------------------
+
+# ------------------------------- Leadership Page Start ----------------------------
+
+#Models representation for team member section
+class TopMember(models.Model):
+    image = models.FileField(upload_to='gallery', null=True, blank=True)
+    name = models.CharField(max_length=100, null=False, blank=False)
+    position = models.CharField(max_length=100, null=False, blank=False)
+    
+    def __str__(self):
+        return f"TopMember {self.name}"
+    
+    class Meta:
+        verbose_name = 'TopMember'
+        verbose_name_plural = 'TopMembers'
+
+#Models representation for team member section
+class DownMember(models.Model):
+    image = models.FileField(upload_to='gallery', null=True, blank=True)
+    name = models.CharField(max_length=100, null=False, blank=False)
+    position = models.CharField(max_length=100, null=False, blank=False)
+    
+    def __str__(self):
+        return f"DownMember {self.name}"
+    
+    class Meta:
+        verbose_name = 'DownMember'
+        verbose_name_plural = 'DownMembers'
+        
+#Models representation for member list section
+class MemberList(models.Model):
+    title = models.CharField(max_length=100, null=False, blank=False)
+    member1 = models.CharField(max_length=100, null=False, blank=False)
+    member2 = models.CharField(max_length=100, null=False, blank=False)
+    member3 = models.CharField(max_length=100, null=False, blank=False)
+    member4 = models.CharField(max_length=100, null=False, blank=False)
+    
+    def __str__(self):
+        return f"MemberList {self.title}"
+    
+    class Meta:
+        verbose_name = 'MemberList'
+        verbose_name_plural = 'MemberLists'
+        
+#--------------------------------------- Leadership Page End -------------------------

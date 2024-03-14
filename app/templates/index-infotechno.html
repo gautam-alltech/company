@@ -11,8 +11,8 @@
                         <!--baseline-->
                         <div class="col-lg-6 col-md-6">
                             <div class="infotechno-hero-text  wow move-up">
-                                <h6>IT Design & Consulting </h6>
-                                <h1 class="font-weight--reguler mb-15">{{ content.title }} <br>{{ content.sub_title }}</h1>
+                                <h6>{{ slider.title }} </h6>
+                                <h1 class="font-weight--reguler mb-15">{{ slider.sub_title }}</h1>
             
                                 <p>Highly Tailored IT Design, Management & Support Services. </p>
             
@@ -21,10 +21,10 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="infotechno-hero-inner-images">
                                 <div class="infotechno-inner-one">
-                                    <img class="img-fluid" src="/media/{{ content.img1 }}" alt="">
+                                    <img class="img-fluid" src="/media/{{ slider.img1 }}" alt="">
                                 </div>
                                 <div class="infotechno-inner-two  wow move-up">
-                                    <img class="img-fluid" src="/media/{{ content.img2 }}" alt="">
+                                    <img class="img-fluid" src="/media/{{ slider.img2 }}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -41,14 +41,14 @@
                             <div class="brand-logo-slider__container-area">
                                 <div class="swiper-container brand-logo-slider__container">
                                     <div class="swiper-wrapper brand-logo-slider__one">
-                                        {% for slides in slider %}
+                                        {% for brand in brands %}
                                         <div class="swiper-slide brand-logo brand-logo--slider">
                                             <a href="#">
                                                 <div class="brand-logo__image">
-                                                    <img src="/media/{{ slides.logo }}" class="img-fluid" alt="">
+                                                    <img src="/media/{{ brand.logo }}" class="img-fluid" alt="">
                                                 </div>
                                                 <div class="brand-logo__image-hover">
-                                                    <img src="/media/{{ slides.logo_hover }}" class="img-fluid" alt="">
+                                                    <img src="/media/{{ brand.logo_hover }}" class="img-fluid" alt="">
                                                 </div>
                                             </a>
                                         </div>

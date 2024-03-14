@@ -1,4 +1,5 @@
 # from typing import Any
+from typing import Any
 from django.shortcuts import render
 from .models import *
 from django.views.generic import TemplateView, ListView
@@ -13,8 +14,8 @@ class Index(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        content = Content.objects.first()
-        slider = Slider.objects.all()
+        slider = Slider.objects.first()
+        brands = Brands.objects.all()
         box = BoxIcon.objects.all()
         company = Company.objects.all()
         largebox = LargeBoxImage.objects.all()
@@ -22,8 +23,8 @@ class Index(TemplateView):
         projects = Project.objects.all()
         testimonial = Testimonial.objects.all()
         context.update({
-            'content': content,
             'slider': slider,
+            'brands': brands,
             'box': box,
             'company': company,
             'largebox': largebox,
@@ -33,7 +34,7 @@ class Index(TemplateView):
         })
         return context
 
-class ContactUs(ListView):
+class ContactUs(TemplateView):
     model = ContactUs
     template_name = 'contact-us.html'
     context_object_name = 'contact'
@@ -67,5 +68,33 @@ class ServiceDetails(TemplateView):
             'security':security,
             'monthly_price':monthly_price,
             'yearly_price':yearly_price
+        })
+        return context
+
+class Careers(TemplateView):
+    template_name = 'careers.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        jobs = Jobs.objects.all()
+        gallery = Gallery.objects.all()
+        context.update({
+            'jobs':jobs,
+            'gallery':gallery
+        })
+        return context
+    
+class Leadership(TemplateView):
+    template_name = 'leadership.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        topmember = TopMember.objects.all()
+        downmember = DownMember.objects.all()
+        memberlist = MemberList.objects.all()
+        context.update({
+            'topmember':topmember,
+            'downmember':downmember,
+            'memberlist':memberlist
         })
         return context
