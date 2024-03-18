@@ -28,4 +28,5 @@ urlpatterns = [
     path('service_details/', ServiceDetails.as_view(), name='service_details'),
     path('careers/', Careers.as_view(), name='careers'),
     path('leadership/', Leadership.as_view(), name='leadership'),
+    path('about_us/', AboutUs.as_view(), name='about_us'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
