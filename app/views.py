@@ -98,3 +98,22 @@ class Leadership(TemplateView):
             'memberlist':memberlist
         })
         return context
+    
+class AboutUs(TemplateView):
+    template_name = 'about-us-01.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        aboutusstory = AboutUsStory.objects.all()
+        aboutussolution = AboutUsSolution.objects.all()
+        aboutusfunfact = AboutUsFunFact.objects.all()
+        aboutustestimonial = AboutUsTestimonial.objects.all()
+        aboutusbrand = AboutUsBrand.objects.all()
+        context.update({
+            'aboutusstory':aboutusstory,
+            'aboutussolution':aboutussolution,
+            'aboutusfunfact':aboutusfunfact,
+            'aboutustestimonial':aboutustestimonial,
+            'aboutusbrand':aboutusbrand
+        })
+        return context

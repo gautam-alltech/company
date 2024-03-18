@@ -310,3 +310,71 @@ class MemberList(models.Model):
         verbose_name_plural = 'MemberLists'
         
 #--------------------------------------- Leadership Page End -------------------------
+
+#-------------------------------------- About Us Page Start --------------------------
+
+#Models representation for Success story section
+class AboutUsStory(models.Model):
+    image = models.FileField(upload_to='gallery', null=True, blank=True)
+    heading = models.CharField(max_length=100, null=False, blank=False)
+    text = models.CharField(max_length=500, null=False, blank=False)
+    
+    def __str__(self):
+        return f"AboutUsStory {self.heading}"
+    
+    class Meta:
+        verbose_name = 'AboutUsStory'
+        verbose_name_plural = 'AboutUsStories'
+        
+#Models representation for Delivering Optimal Solutions section
+class AboutUsSolution(models.Model):
+    title = models.CharField(max_length=100, null=False, blank=False)
+    desc = models.CharField(max_length=500, null=False, blank=False)
+    
+    def __str__(self):
+        return f"AboutUsSolution {self.title}"
+    
+    class Meta:
+        verbose_name = 'AboutUsSolution'
+        verbose_name_plural = 'AboutUsSolutions'
+        
+#Models representation for FunFact section
+class AboutUsFunFact(models.Model):
+    count = models.IntegerField(default=0)
+    text = models.CharField(max_length=100, null=False, blank=False)
+    
+    def __str__(self):
+        return f"AboutUsFunFact {self.text}"
+    
+    class Meta:
+        ordering = ['-count']
+        verbose_name = 'AboutUsFunFact'
+        verbose_name_plural = 'AboutUsFunFacts'
+        
+#Models representation for Testimonial section
+class AboutUsTestimonial(models.Model):
+    image = models.FileField(upload_to='gallery', null=True, blank=True)
+    name = models.CharField(max_length=100, null=False, blank=False)
+    post = models.CharField(max_length=100, null=False, blank=False)
+    text = models.CharField(max_length=500, null=False, blank=False)
+    
+    def __str__(self):
+        return f"AboutUsTestimonial {self.name}"
+    
+    class Meta:
+        verbose_name = 'AboutUsTestimonial'
+        verbose_name_plural = 'AboutUsTestimonials'
+        
+#Models representation for Brand Logo section
+class AboutUsBrand(models.Model):
+    logo = models.FileField(upload_to='gallery', blank=True, null=True)
+    logo_hover = models.FileField(upload_to='gallery', blank=True, null=True)
+    
+    def __str__(self):
+        return f"AboutUsBrand {self.id}"
+    
+    class Meta:
+        verbose_name = "AboutUsBrand"
+        verbose_name_plural = "AboutUsBrands"
+
+#-------------------------------------- About Us Page End ----------------------------
