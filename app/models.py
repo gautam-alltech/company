@@ -1,17 +1,14 @@
 from django.db import models
 
-# Create your models here.
-# ------------------------------- Index Page Start-----------------------------
-    
-# Models representation for content section
+
 class Slider(models.Model):
     title = models.CharField(max_length=200, null=False, blank=False )
     sub_title = models.TextField(null=True, blank=True)
-    img1 = models.FileField(upload_to='gallery', blank=True, null=True)
-    img2 = models.FileField(upload_to='gallery', blank=True, null=True)
+    img1 = models.FileField(upload_to='slider/gallery', blank=True, null=True)
+    img2 = models.FileField(upload_to='slider/gallery', blank=True, null=True)
      
     def __str__(self):
-        return f"Slider {self.title}"
+        return self.title
     
     class Meta:
         verbose_name = "Slider"
@@ -19,11 +16,12 @@ class Slider(models.Model):
     
 # Models representation for brand section
 class Brands(models.Model):
-    logo = models.FileField(upload_to='gallery', blank=True, null=True)
-    logo_hover = models.FileField(upload_to='gallery', blank=True, null=True)
+    name = models.CharField(max_length=255, null=True, blank=True)
+    logo = models.FileField(upload_to='brands/gallery', blank=True, null=True)
+    logo_hover = models.FileField(upload_to='brands/gallery', blank=True, null=True)
     
     def __str__(self):
-        return f"Brands {self.id}"
+        return self.id
     
     class Meta:
         verbose_name = "Brand"
@@ -31,12 +29,12 @@ class Brands(models.Model):
     
 # Models representation for our service section    
 class BoxIcon(models.Model):
-    box_icon = models.FileField(upload_to='gallery', blank=True, null=True)
+    box_icon = models.FileField(upload_to='boxes/gallery', blank=True, null=True)
     box_heading = models.CharField(max_length=200, null=False, blank=False )
     box_text = models.TextField(null=True, blank=True)
     
     def __str__(self):
-        return f"Box_Icon {self.box_heading}"
+        return self.box_heading
     
     class Meta:
         verbose_name = "Box Icon"
@@ -48,7 +46,7 @@ class Company(models.Model):
     question = models.CharField(max_length=500, null=False, blank=False)
         
     def __str__(self):
-        return f"Company {self.question_no}"
+        return self.question_no
     
     class Meta:
         verbose_name = "Company"
@@ -56,12 +54,12 @@ class Company(models.Model):
 
 # Models representation for hiring section
 class LargeBoxImage(models.Model):
-    box_icon = models.FileField(upload_to='gallery', blank=True, null=True)
+    box_icon = models.FileField(upload_to='largeboxes/gallery', blank=True, null=True)
     box_heading = models.CharField(max_length=200, null=False, blank=False )
     box_text = models.TextField(null=True, blank=True)
     
     def __str__(self):
-        return f"LargeBoxImage {self.box_heading}"
+        return self.box_heading
     
     class Meta:
         verbose_name = "Large Box Image"
@@ -74,7 +72,7 @@ class FunFact(models.Model):
     funfact_text = models.TextField(null=True, blank=True)
     
     def __str__(self):
-        return f"FunFact {self.funfact_title}"
+        return self.funfact_title
     
     class Meta:
         verbose_name = "Fun Fact"
@@ -83,13 +81,13 @@ class FunFact(models.Model):
 
 # Models representation for case studies section   
 class Project(models.Model):
-    project_img = models.FileField(upload_to='gallery', blank=True, null=True)
+    project_img = models.FileField(upload_to='projects/gallery', blank=True, null=True)
     project_heading = models.CharField(max_length=200, null=False, blank=False )
     project_category = models.CharField(max_length=200, null=False, blank=False )
     project_text = models.TextField(null=True, blank=True)
     
     def __str__(self):
-        return f"Project {self.project_heading}"
+        return self.project_heading
     
     class Meta:
         verbose_name = "Project"
@@ -99,20 +97,16 @@ class Project(models.Model):
 class Testimonial(models.Model):
     subject = models.CharField(max_length=200, null=False, blank=False )
     text = models.TextField(null=True, blank=True)
-    img = models.FileField(upload_to='gallery', blank=True, null=True)
+    img = models.FileField(upload_to='testimonials/gallery', blank=True, null=True)
     name = models.CharField(max_length=200, null=False, blank=False )
     post = models.CharField(max_length=200, null=False, blank=False )
     
     def __str__(self):
-        return f"Testimonial {self.subject}"
+        return self.subject
     
     class Meta:
         verbose_name = "Testimonial"
         verbose_name_plural = "Testimonials"
-
-#---------------------------------------- Index Page End ---------------------------------
-
-# --------------------------------------- ContactUs Page Start ----------------------------
 
 # Models representation for contactus page
 class ContactUs(models.Model):
@@ -122,24 +116,20 @@ class ContactUs(models.Model):
     phone = models.CharField(max_length=15, null=False, blank=False, default="+91 0000000000")
     
     def __str__(self):
-        return f"Contact {self.location}"
+        return f"{self.location}-{self.address}-{self.email}-{self.phone}"
     
     class Meta:
         verbose_name = "Contact Us"
         verbose_name_plural = "Contact Us-s"
 
-#---------------------------------------- ContactUs Page End ---------------------------
-
-#---------------------------------------- Service Page Start ---------------------------
-
 # Models representation for service page   
 class Service(models.Model):
-    img = models.FileField(upload_to='gallery', blank=True, null=True)
+    img = models.FileField(upload_to='services/gallery', blank=True, null=True)
     heading = models.CharField(max_length = 100, null=False, blank=False)
     text = models.CharField(max_length = 200, null=False, blank=False)
     
     def __str__(self):
-        return f"Service {self.heading}"
+        return self.heading
     
     class Meta:
         verbose_name = "Service"
@@ -147,7 +137,7 @@ class Service(models.Model):
 
 #Models representation for advice section
 class Advice(models.Model):
-    img = models.FileField(upload_to='gallery', blank=True, null=True)
+    img = models.FileField(upload_to='advices/gallery', blank=True, null=True)
     rating = models.DecimalField(max_digits=5, decimal_places=1, default=1.0)
     text = models.CharField(max_length=100, null=False, blank=False)
     phone_heading = models.CharField(max_length=100, null=False, blank=False)
@@ -156,23 +146,20 @@ class Advice(models.Model):
     email = models.EmailField(null=False, blank=False)
     
     def __str__(self):
-        return f"Advice {self.text}"
+        return self.text
     
     class Meta:
         verbose_name = "Advice"
         verbose_name_plural = "Advices"
-    
-#---------------------------------------- Service Page End ---------------------------
 
-#---------------------------------------- Service details Page Start ---------------------------
 #Models representation for banner section
 class Banner(models.Model):
-    img = models.FileField(upload_to='gallery', blank=True, null=True)
+    img = models.FileField(upload_to='banner/gallery', blank=True, null=True)
     heading = models.CharField(max_length=100, null=False, blank=False)
     sub_heading = models.CharField(max_length=100, null=False, blank=False)
     
     def __str__(self):
-        return f"Banner {self.heading}"
+        return self.heading
     
     class Meta:
         verbose_name = "Banner"
@@ -184,7 +171,7 @@ class Success(models.Model):
     text = models.CharField(max_length=500, null=False, blank=False)
     
     def __str__(self):
-        return f"Success {self.story}"
+        return self.story
     
     class Meta:
         verbose_name = 'Success'
@@ -196,16 +183,16 @@ class Security(models.Model):
     text = models.CharField(max_length=500, null=False, blank=False)
     
     def __str__(self):
-        return f"Security {self.service}"
+        return self.service
     
     class Meta:
         verbose_name = 'Security'
         verbose_name_plural = 'Securities'
-    
+
 #Models representation for monthly pricing table section
 class Monthly_Price(models.Model):
     plan_name = models.CharField(max_length=100, null=False, blank=False)
-    plan_img = models.FileField(upload_to='gallery', blank=True, null=True)
+    plan_img = models.FileField(upload_to='prices/gallery', blank=True, null=True)
     plan_currency = models.CharField(max_length=20, null=False, blank=False, default='$')
     plan_price = models.CharField(max_length=10, null=False, blank=False)
     plan_period = models.CharField(max_length=50, null=False, blank=False)
@@ -214,7 +201,7 @@ class Monthly_Price(models.Model):
     plan_list_item3 = models.CharField(max_length=100, null=False, blank=False)
     
     def __str__(self):
-        return f"Security {self.plan_name}"
+        return self.plan_name
     
     class Meta:
         verbose_name = 'Monthly_Price'
@@ -223,7 +210,7 @@ class Monthly_Price(models.Model):
 #Models representation for yearly pricing table section    
 class Yearly_Price(models.Model):
     plan_name = models.CharField(max_length=100, null=False, blank=False)
-    plan_img = models.FileField(upload_to='gallery', blank=True, null=True)
+    plan_img = models.FileField(upload_to='prices/gallery', blank=True, null=True)
     plan_currency = models.CharField(max_length=20, null=False, blank=False, default='$')
     plan_price = models.CharField(max_length=10, null=False, blank=False)
     plan_period = models.CharField(max_length=50, null=False, blank=False)
@@ -232,13 +219,12 @@ class Yearly_Price(models.Model):
     plan_list_item3 = models.CharField(max_length=100, null=False, blank=False)
     
     def __str__(self):
-        return f"Security {self.plan_name}"
+        return self.plan_name
     
     class Meta:
         verbose_name = 'Yearly_Price'
         verbose_name_plural = 'Yearly_Prices'
 
-#------------------------------------Careers Page Start-------------------------------
 
 #Models representation for jobs section
 class Jobs(models.Model):
@@ -247,7 +233,7 @@ class Jobs(models.Model):
     job_desc = models.CharField(max_length=500, null=False, blank=False)
     
     def __str__(self):
-        return f"Jobs {self.job_name}"
+        return self.job_name
     
     class Meta:
         verbose_name = 'Job'
@@ -255,27 +241,24 @@ class Jobs(models.Model):
         
 #Models representation for gallery section
 class Gallery(models.Model):
-    img = models.FileField(upload_to='gallery', null=True, blank=True)
+    img = models.FileField(upload_to='gallery/gallery', null=True, blank=True)
     
     def __str__(self):
-        return f"Gallery {self.id}"
+        return self.id
     
     class Meta:
         verbose_name = 'Gallery'
         verbose_name_plural = 'Galleries'
         
-#-------------------------------- Careers Page End ---------------------------------
-
-# ------------------------------- Leadership Page Start ----------------------------
 
 #Models representation for team member section
 class TopMember(models.Model):
-    image = models.FileField(upload_to='gallery', null=True, blank=True)
+    image = models.FileField(upload_to='members/gallery', null=True, blank=True)
     name = models.CharField(max_length=100, null=False, blank=False)
     position = models.CharField(max_length=100, null=False, blank=False)
     
     def __str__(self):
-        return f"TopMember {self.name}"
+        return self.name
     
     class Meta:
         verbose_name = 'TopMember'
@@ -283,12 +266,12 @@ class TopMember(models.Model):
 
 #Models representation for team member section
 class DownMember(models.Model):
-    image = models.FileField(upload_to='gallery', null=True, blank=True)
+    image = models.FileField(upload_to='members/gallery', null=True, blank=True)
     name = models.CharField(max_length=100, null=False, blank=False)
     position = models.CharField(max_length=100, null=False, blank=False)
     
     def __str__(self):
-        return f"DownMember {self.name}"
+        return self.name
     
     class Meta:
         verbose_name = 'DownMember'
@@ -303,24 +286,20 @@ class MemberList(models.Model):
     member4 = models.CharField(max_length=100, null=False, blank=False)
     
     def __str__(self):
-        return f"MemberList {self.title}"
+        return self.title
     
     class Meta:
         verbose_name = 'MemberList'
         verbose_name_plural = 'MemberLists'
-        
-#--------------------------------------- Leadership Page End -------------------------
-
-#-------------------------------------- About Us Page Start --------------------------
 
 #Models representation for Success story section
 class AboutUsStory(models.Model):
-    image = models.FileField(upload_to='gallery', null=True, blank=True)
+    image = models.FileField(upload_to='about_us/gallery', null=True, blank=True)
     heading = models.CharField(max_length=100, null=False, blank=False)
     text = models.CharField(max_length=500, null=False, blank=False)
     
     def __str__(self):
-        return f"AboutUsStory {self.heading}"
+        return self.heading
     
     class Meta:
         verbose_name = 'AboutUsStory'
@@ -332,7 +311,7 @@ class AboutUsSolution(models.Model):
     desc = models.CharField(max_length=500, null=False, blank=False)
     
     def __str__(self):
-        return f"AboutUsSolution {self.title}"
+        return self.title
     
     class Meta:
         verbose_name = 'AboutUsSolution'
@@ -344,7 +323,7 @@ class AboutUsFunFact(models.Model):
     text = models.CharField(max_length=100, null=False, blank=False)
     
     def __str__(self):
-        return f"AboutUsFunFact {self.text}"
+        return self.text
     
     class Meta:
         ordering = ['-count']
@@ -353,13 +332,13 @@ class AboutUsFunFact(models.Model):
         
 #Models representation for Testimonial section
 class AboutUsTestimonial(models.Model):
-    image = models.FileField(upload_to='gallery', null=True, blank=True)
+    image = models.FileField(upload_to='about_us/gallery', null=True, blank=True)
     name = models.CharField(max_length=100, null=False, blank=False)
     post = models.CharField(max_length=100, null=False, blank=False)
     text = models.CharField(max_length=500, null=False, blank=False)
     
     def __str__(self):
-        return f"AboutUsTestimonial {self.name}"
+        return self.name
     
     class Meta:
         verbose_name = 'AboutUsTestimonial'
@@ -367,14 +346,12 @@ class AboutUsTestimonial(models.Model):
         
 #Models representation for Brand Logo section
 class AboutUsBrand(models.Model):
-    logo = models.FileField(upload_to='gallery', blank=True, null=True)
-    logo_hover = models.FileField(upload_to='gallery', blank=True, null=True)
+    logo = models.FileField(upload_to='about_us/gallery', blank=True, null=True)
+    logo_hover = models.FileField(upload_to='about_us/gallery', blank=True, null=True)
     
     def __str__(self):
-        return f"AboutUsBrand {self.id}"
+        return self.id
     
     class Meta:
         verbose_name = "AboutUsBrand"
         verbose_name_plural = "AboutUsBrands"
-
-#-------------------------------------- About Us Page End ----------------------------
