@@ -33,11 +33,17 @@ class Index(TemplateView):
             'testimonial': testimonial,
         })
         return context
-
-class ContactUs(TemplateView):
-    model = ContactUs
+    
+class Contact(TemplateView):
     template_name = 'contact-us.html'
-    context_object_name = 'contact'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        contactus = ContactUs.objects.all()
+        context.update({
+            'contactus':contactus
+        })
+        return context
 
 class Services(TemplateView):
     template_name = 'it-services.html'
@@ -60,8 +66,8 @@ class ServiceDetails(TemplateView):
         banner = Banner.objects.first()
         success = Success.objects.all()
         security = Security.objects.all()
-        monthly_price = Monthly_Price.objects.all()
-        yearly_price = Yearly_Price.objects.all()
+        monthly_price = {} # Monthly_Price.objects.all()
+        yearly_price = {} # Yearly_Price.objects.all()
         context.update({
             'banner':banner,
             'success':success,
@@ -89,8 +95,8 @@ class Leadership(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        topmember = TopMember.objects.all()
-        downmember = DownMember.objects.all()
+        topmember = {} # TopMember.objects.all()
+        downmember = {} # DownMember.objects.all()
         memberlist = MemberList.objects.all()
         context.update({
             'topmember':topmember,
@@ -106,14 +112,39 @@ class AboutUs(TemplateView):
         context = super().get_context_data(**kwargs)
         aboutusstory = AboutUsStory.objects.all()
         aboutussolution = AboutUsSolution.objects.all()
-        aboutusfunfact = AboutUsFunFact.objects.all()
-        aboutustestimonial = AboutUsTestimonial.objects.all()
-        aboutusbrand = AboutUsBrand.objects.all()
+        aboutusfunfact = {} # AboutUsFunFact.objects.all()
+        aboutustestimonial = {} #AboutUsTestimonial.objects.all()
+        aboutusbrand = {} # AboutUsBrand.objects.all()
         context.update({
             'aboutusstory':aboutusstory,
             'aboutussolution':aboutussolution,
             'aboutusfunfact':aboutusfunfact,
             'aboutustestimonial':aboutustestimonial,
             'aboutusbrand':aboutusbrand
+        })
+        return context
+    
+class WhyChooseUs(TemplateView):
+    template_name = 'why-choose-us.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        progresschart = ProgressChart.objects.all()
+        features = Features.objects.all()
+        context.update({
+            'progresschart':progresschart,
+            'features':features
+        })
+        return context
+    
+class TestimonialSection(TemplateView):
+    template_name = 'element-testimonials.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # testimonialpage = TestimonialPage.objects.all()
+        testimonialpage = {}
+        context.update({
+            'testimonialpage':testimonialpage
         })
         return context

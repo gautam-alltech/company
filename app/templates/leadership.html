@@ -2,9 +2,6 @@
 {% load static %}
 {% block body %}
 
-    <!--====================  End of header area  ====================-->
-
-
 
     <!-- breadcrumb-area start -->
     <div class="breadcrumb-area">
@@ -15,7 +12,8 @@
                         <h2 class="breadcrumb-title">Leadership</h2>
                         <!-- breadcrumb-list start -->
                         <ul class="breadcrumb-list">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{% url "index" %}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{% url "about_us" %}">About Us</a></li>
                             <li class="breadcrumb-item active">Leadership</li>
                         </ul>
                         <!-- breadcrumb-list end -->
@@ -25,15 +23,6 @@
         </div>
     </div>
     <!-- breadcrumb-area end -->
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,10 +1,6 @@
 {% extends "my/base.html" %} {% block body %} {% load static %}
 
 
-    <!--====================  End of header area  ====================-->
-
-
-
 
     <!-- breadcrumb-area start -->
     <div class="breadcrumb-area">
@@ -17,7 +13,7 @@
                         <p>We are on the look-out for dynamic individuals that bring energy and passion to their work. Just like us.</p>
                         <!-- breadcrumb-list start -->
                         <ul class="breadcrumb-list">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{% url "index" %}">Home</a></li>
                             <li class="breadcrumb-item active">Careers</li>
                         </ul>
                         <!-- breadcrumb-list end -->
@@ -27,12 +23,6 @@
         </div>
     </div>
     <!-- breadcrumb-area end -->
-
-
-
-
-
-
 
 
 
@@ -101,9 +91,7 @@
                             <div class="section-title-wrap text-center">
                                 <h3 class="section-title mb-15 wow move-up">Here to Help Your Every Business Need</h3>
                                 <p>We focus on the IT solutions, so you can focus on your business. See what we can do for you today!</p>
-                                {% comment %} <div class="contact-button section-space--mt_30 wow move-up">
-                                    <a href="#" class="hover-style-link">View all team <i class="far fa-long-arrow-right"></i></a>
-                                </div> {% endcomment %}
+                    
                             </div>
                         </div>
                     </div>
