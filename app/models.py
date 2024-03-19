@@ -270,3 +270,27 @@ class AboutUsSolution(models.Model):
     class Meta:
         verbose_name = 'AboutUsSolution'
         verbose_name_plural = 'AboutUsSolutions'
+
+class ProgressChart(models.Model):
+    heading = models.CharField(max_length=50, null=False, blank=False)
+    progress = models.CharField(max_length=5, null=False, blank=False)
+
+    def __str__(self):
+        return f"ProgressChart {self.heading}"
+
+    class Meta:
+        verbose_name = 'ProgressChart'
+        verbose_name_plural = 'ProgressCharts'
+
+#Models representation for Features section
+class Features(models.Model):
+    image = models.FileField(upload_to='gallery', null=True, blank=True)
+    heading = models.CharField(max_length=100, null=False, blank=False)
+    text = models.CharField(max_length=500, null=False, blank=False)
+
+    def __str__(self):
+        return f"Features {self.heading}"
+
+    class Meta:
+        verbose_name = 'Feature'
+        verbose_name_plural = 'Features'
