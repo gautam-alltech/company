@@ -253,3 +253,92 @@ class AboutUsSolution(models.Model):
     class Meta:
         verbose_name = 'AboutUsSolution'
         verbose_name_plural = 'AboutUsSolutions'
+<<<<<<< HEAD
+=======
+        
+#Models representation for FunFact section
+class AboutUsFunFact(models.Model):
+    count = models.IntegerField(default=0)
+    text = models.CharField(max_length=100, null=False, blank=False)
+    
+    def __str__(self):
+        return f"AboutUsFunFact {self.text}"
+    
+    class Meta:
+        ordering = ['-count']
+        verbose_name = 'AboutUsFunFact'
+        verbose_name_plural = 'AboutUsFunFacts'
+        
+#Models representation for Testimonial section
+class AboutUsTestimonial(models.Model):
+    image = models.FileField(upload_to='gallery', null=True, blank=True)
+    name = models.CharField(max_length=100, null=False, blank=False)
+    post = models.CharField(max_length=100, null=False, blank=False)
+    text = models.CharField(max_length=500, null=False, blank=False)
+    
+    def __str__(self):
+        return f"AboutUsTestimonial {self.name}"
+    
+    class Meta:
+        verbose_name = 'AboutUsTestimonial'
+        verbose_name_plural = 'AboutUsTestimonials'
+        
+#Models representation for Brand Logo section
+class AboutUsBrand(models.Model):
+    logo = models.FileField(upload_to='gallery', blank=True, null=True)
+    logo_hover = models.FileField(upload_to='gallery', blank=True, null=True)
+    
+    def __str__(self):
+        return f"AboutUsBrand {self.id}"
+    
+    class Meta:
+        verbose_name = "AboutUsBrand"
+        verbose_name_plural = "AboutUsBrands"
+
+#-------------------------------------- About Us Page End ----------------------------
+
+#-------------------------------------- Why Choose Us Page Start ----------------------------
+
+#Models representation for Progress Chart section
+class ProgressChart(models.Model):
+    heading = models.CharField(max_length=50, null=False, blank=False)
+    progress = models.CharField(max_length=5, null=False, blank=False)
+    
+    def __str__(self):
+        return f"ProgressChart {self.heading}"
+    
+    class Meta:
+        verbose_name = 'ProgressChart'
+        verbose_name_plural = 'ProgressCharts'
+        
+#Models representation for Features section
+class Features(models.Model):
+    image = models.FileField(upload_to='gallery', null=True, blank=True)
+    heading = models.CharField(max_length=100, null=False, blank=False)
+    text = models.CharField(max_length=500, null=False, blank=False)
+    
+    def __str__(self):
+        return f"Features {self.heading}"
+    
+    class Meta:
+        verbose_name = 'Feature'
+        verbose_name_plural = 'Features'
+
+#-------------------------------------- Why Choose Us Page End ----------------------------
+
+#-------------------------------------- Testimonials Page Start ----------------------------
+
+#Models representation for testimonial section
+class TestimonialPage(models.Model):
+    text = models.TextField(null=False, blank=False)
+    name = models.CharField(max_length=50, null=False, blank=False)
+    
+    def __str__(self):
+        return f"TestimonialPage {self.name}"
+    
+    class Meta:
+        verbose_name = 'TestimonialPage'
+        verbose_name_plural = 'TestimonialPages'
+
+#-------------------------------------- Testimonials Page End ----------------------------
+>>>>>>> 2200020 (Added Why-choose-us page, testimonial page and optimise code)

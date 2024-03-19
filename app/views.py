@@ -33,11 +33,17 @@ class Index(TemplateView):
             'testimonial': testimonial,
         })
         return context
-
-class ContactUs(TemplateView):
-    model = ContactUs
+    
+class Contact(TemplateView):
     template_name = 'contact-us.html'
-    context_object_name = 'contact'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        contactus = ContactUs.objects.all()
+        context.update({
+            'contactus':contactus
+        })
+        return context
 
 class Services(TemplateView):
     template_name = 'it-services.html'
@@ -115,5 +121,29 @@ class AboutUs(TemplateView):
             'aboutusfunfact':aboutusfunfact,
             'aboutustestimonial':aboutustestimonial,
             'aboutusbrand':aboutusbrand
+        })
+        return context
+    
+class WhyChooseUs(TemplateView):
+    template_name = 'why-choose-us.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        progresschart = ProgressChart.objects.all()
+        features = Features.objects.all()
+        context.update({
+            'progresschart':progresschart,
+            'features':features
+        })
+        return context
+    
+class TestimonialSection(TemplateView):
+    template_name = 'element-testimonials.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        testimonialpage = TestimonialPage.objects.all()
+        context.update({
+            'testimonialpage':testimonialpage
         })
         return context

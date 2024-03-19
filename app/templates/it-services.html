@@ -10,10 +10,11 @@
                     <h1 class="breadcrumb-title">Our Services</h2>
                     <p>We at 'Coders Brain' provides talent management services that assist businesses in succeeding in a fast-changing, unpredictable world of work.</p>
                     <!-- breadcrumb-list start -->
-                    {% comment %} <ul class="breadcrumb-list">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <ul class="breadcrumb-list">
+                        <li class="breadcrumb-item"><a href="{% url "index" %}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{% url "services" %}">Services</a></li>
                         <li class="breadcrumb-item active">IT Services</li>
-                    </ul> {% endcomment %}
+                    </ul>
                     <!-- breadcrumb-list end -->
                 </div>
             </div>

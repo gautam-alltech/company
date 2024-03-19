@@ -21,12 +21,14 @@ from django.contrib.staticfiles.urls import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', Home.as_view(), name='home'),
+    path('', Index.as_view(), name='index'),
     path('index/', Index.as_view(), name='index'),
-    path('contact_us/', ContactUs.as_view(), name='contact_us'),
+    path('contact/', Contact.as_view(), name='contact'),
     path('services/', Services.as_view(), name='services'),
     path('service_details/', ServiceDetails.as_view(), name='service_details'),
     path('careers/', Careers.as_view(), name='careers'),
     path('leadership/', Leadership.as_view(), name='leadership'),
     path('about_us/', AboutUs.as_view(), name='about_us'),
+    path('why_choose_us/', WhyChooseUs.as_view(), name='why_choose_us'),
+    path('testimonial_section/', TestimonialSection.as_view(), name='testimonial_section'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

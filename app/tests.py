@@ -6,7 +6,7 @@ from .models import *
 # Create your tests here.
 class HomeTestCase(TestCase):
     def test_home(self):
-        response = self.client.get(reverse('home'))
+        response = self.client.get(reverse('index'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'index-infotechno.html')
 
@@ -20,7 +20,7 @@ class IndexTestCase(TestCase):
 
 class ContactUsTestCase(TestCase):
     def test_contact_us(self):
-        response = self.client.get(reverse('contact_us'))
+        response = self.client.get(reverse('contact'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'contact-us.html')
 
@@ -58,3 +58,15 @@ class AboutUsTestCase(TestCase):
         response = self.client.get(reverse('about_us'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'about-us-01.html')
+        
+class WhyChooseUsTestCase(TestCase):        
+    def test_why_choose_us(self):
+        response = self.client.get(reverse('why_choose_us'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'why-choose-us.html')
+        
+class TestimonialSectionTestCase(TestCase):        
+    def test_testimonial_section(self):
+        response = self.client.get(reverse('testimonial_section'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'element-testimonials.html')
