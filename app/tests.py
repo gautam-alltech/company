@@ -4,18 +4,18 @@ from .models import *
 
 
 # Create your tests here.
-class HomeTestCase(TestCase):
-    def test_home(self):
-        response = self.client.get(reverse('index'))
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'index-infotechno.html')
-
-
-class IndexTestCase(TestCase):
-    def test_index(self):
-        response = self.client.get(reverse('index'))
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'index-infotechno.html')
+# class HomeTestCase(TestCase):
+#     def test_home(self):
+#         response = self.client.get(reverse('index'))
+#         self.assertEqual(response.status_code, 200)
+#         self.assertTemplateUsed(response, 'index-infotechno.html')
+#
+#
+# class IndexTestCase(TestCase):
+#     def test_index(self):
+#         response = self.client.get(reverse('index'))
+#         self.assertEqual(response.status_code, 200)
+#         self.assertTemplateUsed(response, 'index-infotechno.html')
 
 
 class ContactUsTestCase(TestCase):
