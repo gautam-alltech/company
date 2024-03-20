@@ -16,11 +16,11 @@ class Index(TemplateView):
         context = super().get_context_data(**kwargs)
         slider = Slider.objects.first()
         brands = Brands.objects.all()
-        box = BoxIcon.objects.all()
+        box = BoxIcon.objects.filter(page='box')
         company = Company.objects.all()
-        largebox = LargeBoxImage.objects.all()
+        largebox = BoxIcon.objects.filter(page='largebox')
         funfact = FunFact.objects.all()
-        projects = Project.objects.all()
+        projects = Gallery.objects.filter(page='projects')
         testimonial = Testimonial.objects.all()
         context.update({
             'slider': slider,
@@ -50,7 +50,7 @@ class Services(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        services = Service.objects.all()
+        services = BoxIcon.objects.filter(page='services')
         advice = Advice.objects.first()
         context.update({
             'services': services,
@@ -63,13 +63,11 @@ class ServiceDetails(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        banner = Banner.objects.first()
-        success = Success.objects.all()
-        security = Security.objects.all()
+        success = Success.objects.filter(page='success')
+        security = Success.objects.filter(page='security')
         monthly_price = {} # Monthly_Price.objects.all()
         yearly_price = {} # Yearly_Price.objects.all()
         context.update({
-            'banner':banner,
             'success':success,
             'security':security,
             'monthly_price':monthly_price,
@@ -83,7 +81,7 @@ class Careers(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         jobs = Jobs.objects.all()
-        gallery = Gallery.objects.all()
+        gallery = Gallery.objects.filter(page='gallery')
         context.update({
             'jobs':jobs,
             'gallery':gallery
@@ -110,7 +108,7 @@ class AboutUs(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        aboutusstory = AboutUsStory.objects.all()
+        aboutusstory = BoxIcon.objects.filter(page='aboutusstory')
         aboutussolution = AboutUsSolution.objects.all()
         aboutusfunfact = {} # AboutUsFunFact.objects.all()
         aboutustestimonial = {} #AboutUsTestimonial.objects.all()
@@ -130,7 +128,7 @@ class WhyChooseUs(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         progresschart = ProgressChart.objects.all()
-        features = Features.objects.all()
+        features = BoxIcon.objects.filter(page='features')
         context.update({
             'progresschart':progresschart,
             'features':features

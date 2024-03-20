@@ -103,10 +103,10 @@
                                 <!-- gallery-warp Start -->
                                 <div class="gallery-warp popup-images ">
                                     <!-- single gallery Start -->
-                                    {% for image in gallery %}
-                                    <a class="single-gallery gallery-grid wow move-up" href="/media/{{ image.img }}">
+                                    {% for item in gallery %}
+                                    <a class="single-gallery gallery-grid wow move-up" href="/media/{{ item.image }}">
                                         <div class="single-gallery__item">
-                                            <div class="single-gallery__thum bg-item-images bg-img" data-bg="/media/{{ image.img }}">
+                                            <div class="single-gallery__thum bg-item-images bg-img" data-bg="/media/{{ item.image }}">
 
                                             </div>
                                             <div class="ht-overlay"></div>
