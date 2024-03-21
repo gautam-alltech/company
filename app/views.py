@@ -14,7 +14,7 @@ class Index(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        slider = Slider.objects.first()
+        slider = Slider.objects.filter(page='index').first()
         brands = Brands.objects.all()
         box = BoxIcon.objects.filter(page='box')
         company = Company.objects.all()
@@ -39,8 +39,10 @@ class Contact(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        slider = Slider.objects.filter(page='contact').first()
         contactus = ContactUs.objects.all()
         context.update({
+            'slider':slider,
             'contactus':contactus
         })
         return context
@@ -50,9 +52,11 @@ class Services(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        slider = Slider.objects.filter(page='services').first()
         services = BoxIcon.objects.filter(page='services')
         advice = Advice.objects.first()
         context.update({
+            'slider':slider,
             'services': services,
             'advice': advice,
         })
@@ -63,11 +67,13 @@ class ServiceDetails(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        slider = Slider.objects.filter(page='servicedetails').first()
         success = Success.objects.filter(page='success')
         security = Success.objects.filter(page='security')
         monthly_price = {} # Monthly_Price.objects.all()
         yearly_price = {} # Yearly_Price.objects.all()
         context.update({
+            'slider':slider,
             'success':success,
             'security':security,
             'monthly_price':monthly_price,
@@ -80,9 +86,11 @@ class Careers(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        slider = Slider.objects.filter(page='careers').first()
         jobs = Jobs.objects.all()
         gallery = Gallery.objects.filter(page='gallery')
         context.update({
+            'slider':slider,
             'jobs':jobs,
             'gallery':gallery
         })
@@ -93,10 +101,12 @@ class Leadership(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        slider = Slider.objects.filter(page='leadership').first()
         topmember = {} # TopMember.objects.all()
         downmember = {} # DownMember.objects.all()
         memberlist = MemberList.objects.all()
         context.update({
+            'slider':slider,
             'topmember':topmember,
             'downmember':downmember,
             'memberlist':memberlist
@@ -108,12 +118,14 @@ class AboutUs(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        slider = Slider.objects.filter(page='aboutus').first()
         aboutusstory = BoxIcon.objects.filter(page='aboutusstory')
         aboutussolution = AboutUsSolution.objects.all()
         aboutusfunfact = {} # AboutUsFunFact.objects.all()
         aboutustestimonial = {} #AboutUsTestimonial.objects.all()
         aboutusbrand = {} # AboutUsBrand.objects.all()
         context.update({
+            'slider':slider,
             'aboutusstory':aboutusstory,
             'aboutussolution':aboutussolution,
             'aboutusfunfact':aboutusfunfact,
@@ -127,9 +139,11 @@ class WhyChooseUs(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        slider = Slider.objects.filter(page='whychooseus').first()
         progresschart = ProgressChart.objects.all()
         features = BoxIcon.objects.filter(page='features')
         context.update({
+            'slider':slider,
             'progresschart':progresschart,
             'features':features
         })
@@ -140,9 +154,11 @@ class TestimonialSection(TemplateView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        slider = Slider.objects.filter(page='testimonial').first()
         # testimonialpage = TestimonialPage.objects.all()
         testimonialpage = {}
         context.update({
+            'slider':slider,
             'testimonialpage':testimonialpage
         })
         return context
