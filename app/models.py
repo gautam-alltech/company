@@ -2,13 +2,15 @@ from django.db import models
 
 
 class Slider(models.Model):
-    title = models.CharField(max_length=200, null=False, blank=False)
-    sub_title = models.TextField(null=True, blank=True)
     img1 = models.FileField(upload_to='slider/gallery', blank=True, null=True)
     img2 = models.FileField(upload_to='slider/gallery', blank=True, null=True)
-
+    title = models.CharField(max_length=255, null=False, blank=False)
+    heading = models.CharField(max_length=255, null=False, blank=False)
+    text = models.CharField(max_length=255, null=False, blank=False)
+    page = models.CharField(max_length=100, null=False, blank=False) #for all pages
+    
     def __str__(self):
-        return self.title
+        return self.page
 
     class Meta:
         verbose_name = "Slider"
@@ -34,7 +36,7 @@ class BoxIcon(models.Model):
     image = models.FileField(upload_to='boxes/gallery', blank=True, null=True)
     heading = models.CharField(max_length=200, null=False, blank=False)
     text = models.TextField(null=True, blank=True)
-    page = models.CharField(max_length=100, null=False, blank=False) #for box, largebox, service, banner,aboutusstory and features
+    page = models.CharField(max_length=100, null=False, blank=False) #for box, largebox, service, aboutusstory and features
 
     def __str__(self):
         return self.heading

@@ -4,13 +4,13 @@
 
     <div id="main-wrapper">
         <div class="site-wrapper-reveal">
-            <div class="about-banner-wrap banner-space bg-img" data-bg="{% static 'assets/images/bg/managed-it-services-hero-bg.webp' %}">
+            <div class="about-banner-wrap banner-space bg-img" data-bg="/media/{{ slider.img1 }}">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-8 m-auto">
                             <div class="about-banner-content text-center">
-                                <h1 class="mb-15 text-white">Services Details</h1>
-                                <h5 class="font-weight--normal text-white">Reach out to the world’s most reliable IT services.</h5>
+                                <h1 class="mb-15 text-black">{{ slider.heading }}</h1>
+                                <h5 class="font-weight--normal text-black">{{ slider.text }}</h5>
                             </div>
                         </div>
                     </div>
